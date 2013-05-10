@@ -1,0 +1,111 @@
+@function spacing($n) {
+  @return $n * $spacing-base;
+}
+
+@mixin bp-spacing($breakpoint:""){
+
+  $spacing-sizes: small normal medium large !default;
+  $spacing-base: 10px !default;
+
+  @if ($breakpoint != ""){
+      $breakpoint: -#{$breakpoint};
+  }
+
+  .unit#{$breakpoint}-pad-flush {
+    padding: 0 !important;
+  }
+
+  .unit#{$breakpoint}-inset-flush {
+    margin: 0!important;
+  }
+
+  .unit#{$breakpoint}-flush {
+    padding: 0 !important;
+    margin: 0!important;
+  }
+
+  .unit#{$breakpoint}-pad-vert-flush {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .unit#{$breakpoint}-inset-vert-flush {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .unit#{$breakpoint}-pad-horz-flush {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .unit#{$breakpoint}-inset-horz-flush {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  @for $i from 1 through length($spacing-sizes) {
+    $size: nth($spacing-sizes, $i);
+    // Padding
+    .unit#{$breakpoint}-pad-#{$size} {
+      padding: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-pad-top-#{$size} {
+      padding-top: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-pad-right-#{$size} {
+      padding-right: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-pad-bottom-#{$size} {
+      padding-bottom: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-pad-left-#{$size} {
+      padding-left: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-pad-vert-#{$size} {
+      padding-top: spacing($i) !important;
+      padding-bottom: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-pad-horz-#{$size} {
+      padding-right: spacing($i) !important;
+      padding-left: spacing($i) !important;
+    }
+    // Margin Classes
+    .unit#{$breakpoint}-inset-#{$size} {
+      margin: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-inset-top-#{$size} {
+      margin-top: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-inset-right-#{$size} {
+      margin-right: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-inset-bottom-#{$size} {
+      margin-bottom: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-inset-left-#{$size} {
+      margin-left: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-inset-vert-#{$size} {
+      margin-top: spacing($i) !important;
+      margin-bottom: spacing($i) !important;
+    }
+    .unit#{$breakpoint}-inset-horz-#{$size} {
+      margin-right: spacing($i) !important;
+      margin-left: spacing($i) !important;
+    }
+  }
+}
+
+@media (max-width: 800px){
+    @include bp-spacing("800");
+}
+@media (max-width: 640px){
+    @include bp-spacing("640");
+}
+@media (max-width: 480px){
+    @include bp-spacing("480");
+}
+@media (max-width: 320px){
+    @include bp-spacing("320");
+}
