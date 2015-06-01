@@ -1,0 +1,10 @@
+{
+  "name": "@nib-styles/breakpoint-spacing",
+  "version": "0.0.1",
+  "main": "index.scss",
+  "main.css": "index.scss",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nib-styles/breakpoint-spacing.git"
+  }
+}
